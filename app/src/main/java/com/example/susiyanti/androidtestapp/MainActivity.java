@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new TitleDbHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();
 
+        clearDatabase();
         updateTitle();
 
         Button btnShow = (Button)findViewById(R.id.btn_show);
@@ -45,6 +46,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+     //   db.execSQL("DROP TABLE IF EXISTS " + TitleContract.TitleEntry.TABLE_NAME);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+      //  db.execSQL("DROP TABLE IF EXISTS " + TitleContract.TitleEntry.TABLE_NAME);
     }
 
     public void updateTitle(){
@@ -164,5 +177,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void clearDatabase() {
+        String clearDBQuery = "DELETE FROM "+TitleContract.TitleEntry.TABLE_NAME;
+        db.execSQL(clearDBQuery);
     }
 }

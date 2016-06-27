@@ -59,5 +59,4 @@ public class TitleDbHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-
 }
