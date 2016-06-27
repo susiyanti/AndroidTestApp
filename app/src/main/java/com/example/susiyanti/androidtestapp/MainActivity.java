@@ -48,18 +48,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-     //   db.execSQL("DROP TABLE IF EXISTS " + TitleContract.TitleEntry.TABLE_NAME);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-      //  db.execSQL("DROP TABLE IF EXISTS " + TitleContract.TitleEntry.TABLE_NAME);
-    }
-
     public void updateTitle(){
         FetchTitleTask f = new FetchTitleTask();
         f.execute();
